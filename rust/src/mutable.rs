@@ -393,7 +393,7 @@ where
             }
             i -= 1;
         }
-                                 // println!("End of step 2: {:?}", self.sa);
+        // println!("End of step 2: {:?}", self.sa);
         lms_char_count_excluding_sentinel + 1
     }
 
@@ -874,12 +874,12 @@ mod tests {
         assert_eq!(&solver.sa, &EXAMPLE_LI_FINAL_SA);
     }
 
-    use super::super::SuffixArray;
+    use crate::naive::SuffixArray;
 
     #[test]
     fn test_manual() {
         let mut s = vec![
-            9u8, 1, 10, 6, 4, 4, 4, 5, 3, 5, 2, 3, 10, 4, 3, 4, 10, 3, 1, 0
+            9u8, 1, 10, 6, 4, 4, 4, 5, 3, 5, 2, 3, 10, 4, 3, 4, 10, 3, 1, 0,
         ];
         let mut sa = vec![0; s.len()];
         let sc = s.clone();
@@ -890,7 +890,7 @@ mod tests {
         // println!("After rename T: {:?}", solver.s);
         solver.sort_all_lms_chars();
         solver.induced_sort_all_suffixes();
-         println!("Computed: {:?}", solver.sa);
+        println!("Computed: {:?}", solver.sa);
         assert_eq!(&expected.sa, &solver.sa);
     }
 

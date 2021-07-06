@@ -65,11 +65,11 @@ public:
         }
         if (l <= s)
         {
-            return tuple{ true, lms, l, s };
+            return tuple{true, lms, l, s};
         }
         else
         {
-            return tuple{ false, lml, l, s };
+            return tuple{false, lml, l, s};
         }
     }
 
@@ -110,7 +110,7 @@ public:
             }
             // accumulation
             size_t prev = sa[0];
-            size_t* curr;
+            size_t *curr;
             for (size_t i = 1; i < range; i++)
             {
                 curr = &sa[i];
@@ -133,7 +133,7 @@ public:
                     if (lo_char <= t_i && t_i < hi_char)
                     {
                         // if in range
-                        size_t* idx_in_output_without_offset = &sa[t_i - lo_char];
+                        size_t *idx_in_output_without_offset = &sa[t_i - lo_char];
                         *idx_in_output_without_offset -= 1;
                         sa[output_curr_head + *idx_in_output_without_offset] = i;
                     }
@@ -190,7 +190,7 @@ public:
             }
             // accumulation
             size_t prev = sa[0];
-            size_t* curr;
+            size_t *curr;
             for (size_t i = 1; i < range; i++)
             {
                 curr = &sa[i];
@@ -213,7 +213,7 @@ public:
                     if (lo_char <= t_i && t_i < hi_char)
                     {
                         // if in range
-                        size_t* idx_in_output_without_offset = &sa[t_i - lo_char];
+                        size_t *idx_in_output_without_offset = &sa[t_i - lo_char];
                         *idx_in_output_without_offset -= 1;
                         sa[output_curr_head + *idx_in_output_without_offset] = i;
                     }
@@ -234,21 +234,14 @@ public:
 
     void print_sa()
     {
-        for (auto&& i : sa)
+        for (auto &&i : sa)
         {
             cout << i << " ";
         }
         cout << "\n"
-            << endl;
+             << endl;
     }
 };
-
-void print(const auto& seq)
-{
-    for (const auto& elem : seq)
-        std::cout << elem << ' ';
-    std::cout << '\n';
-}
 
 int main()
 {
@@ -270,7 +263,7 @@ int main()
         vector<size_t> sa(10, 0);
 
         auto solver = Solver(span(t), span(sa), sigma);
-        for (auto&& c : t)
+        for (auto &&c : t)
         {
             cout << c << " ";
         }
@@ -289,6 +282,4 @@ int main()
 
         solver.print_sa();
     }
-
-    // static_assert(starts_with(std::span{a}, std::span{a, 4}) && starts_with(std::span{a + 1, 4}, std::span{a + 1, 3}) && !starts_with(std::span{a}, std::span{b}) && !starts_with(std::span{a, 8}, std::span{a + 1, 3}) && ends_with(std::span{a}, std::span{a + 6, 3}) && !ends_with(std::span{a}, std::span{a + 6, 2}) && contains(std::span{a}, std::span{a + 1, 4}) && !contains(std::span{a, 8}, std::span{a, 9}));
 }
